@@ -8,7 +8,7 @@ Sketchbook is a tool that helps create art with code.
 
 What is a creative process? An iterative process of generating ideas, developing them, and bringing them to life. 
 
-Sketchbook makes use of a process called [ZettleKasten](https://en.wikipedia.org/wiki/Zettelkasten) invented by Nkilas Luhman. But instead of taking notes on a concept or idea we create a **Sketch**. 
+Sketchbook makes use of a process called [ZettelKasten](https://en.wikipedia.org/wiki/Zettelkasten) invented by Nkilas Luhman. But instead of taking notes on a concept or idea we create a **Sketch**. 
 
 Take a look at this example diagram:
 
