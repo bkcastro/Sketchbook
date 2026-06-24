@@ -1,16 +1,5 @@
-import chalk from 'chalk'
-import clear from 'clear'
-import figlet from 'figlet'
-import { directoryExists, loadSketchbookFile } from './lib/files.js'
-import { displayUserInfo } from './lib/user.js'
+#!/usr/bin/env node 
 
-clear();
+import { process_input } from './lib/input.js'
 
-if (directoryExists('.sketchbook.json')) {
-	
-	displayUserInfo();
-
-} else {
-	
-	console.log(chalk.red("This directory is not a sketchbook please make one with: sketch init"))
-}
+process_input();

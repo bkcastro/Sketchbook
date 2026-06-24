@@ -1,10 +1,11 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
-const url = require("url");
+import http from "http";
+import fs from "fs";
+import path from "path";
+import url from "url";
 
 const ROOT_DIR = process.argv[2] || ".";
 const PORT = 3000;
+const __dirname = process.cwd();
 
 const mimeType = {
   '.ico': 'image/x-icon',
@@ -56,13 +57,12 @@ function renderTree(relPath = "") {
 }
 
 function renderDisplay(relPath = "") {
+
 		const fullPath = path.join(ROOT_DIR, relPath);
 		var res = "";	
 		const entries = fs.readdirSync(fullPath, { withFileTypes: true })
 		.filter(e => e.isDirectory() && !e.name.startsWith(".") && isNumberedFolder(e.name))
 		.sort((a, b) => a.name.localeCompare(b.name));
-	
-		total_sketches += entries.length;
 
 		for (let i = 0; i < entries.length; i++) {
 			const entry = entries[i];
