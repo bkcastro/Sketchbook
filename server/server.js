@@ -26,11 +26,14 @@ const mimeType = {
   '.ttf': 'application/x-font-ttf',
 };
 
+let tree_data;
+let display_data;
+var total_sketches = 0;
+
 function isNumberedFolder(name) {
 	return /^\d+/.test(name);
 }
 
-var total_sketches = 0;
 
 function renderTree(relPath = '') {
 		const fullPath = path.join(ROOT_DIR, relPath);
@@ -82,6 +85,18 @@ function renderDisplay(relPath = '') {
 		return res;
 }
 
+/**
+ * Fetch the data for the server.
+ *
+ * @return {void}
+ */
+function getData() {
+	total_sketches = 0;
+
+	tree_data = renderTree();
+	display_data = renderDisplay();
+}
+
 function render(file, data) {
 	    let html = fs.readFileSync(file, 'utf-8');
 
@@ -103,6 +118,8 @@ const server = http.createServer((req, res) => {
 		res.writeHead(200, {
 			'Content-Type': 'text/html'
 		});
+
+		getData();
 
 		const html = render(path.join(__dirname, 'reference.html'), {
 			tree: tree_data, 
@@ -173,16 +190,8 @@ const server = http.createServer((req, res) => {
 });
 
 
-let tree_data;
-let display_data;
 
 export default function start_server() {
-	
-	/**
-	 * Load data.
-	 */
-	tree_data = renderTree(); 
-	display_data = renderDisplay();
 
 	server.listen(PORT, () => {
 		console.log(
