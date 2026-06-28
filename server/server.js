@@ -75,14 +75,13 @@ function renderDisplay(relPath = '') {
 			const childPath = path.join(relPath, entry.name);
             
             const sketch_files = fs.readdirSync(path.join(childPath, './sketch'));
-            const regex = /^thumbnail\.[jpg|webp|png]$/;
+            const regex = /^thumbnail\.[jpg|webp|png]+$/;
             const filter = sketch_files.filter(file => regex.test(file));
-            const thumbnail = (filter.length) ? filter[0] : 'https://media.tithe.ly/images/picture.jpeg'
+            const thumbnail = (filter.length) ? childPath + '/sketch/' + filter[0] : 'https://media.tithe.ly/images/picture.jpeg'
 		    
-            console.log(sketch_files);
 			res += `
 				<div class='card'>
-					<img class='custom-img' src='${childPath}/sketch/thumbnail.webp' width='300' height='300' alt=''>
+					<img class='custom-img' src='${thumbnail}' width='300' height='300' alt=''>
 					<p>title</p>
 					<a target='_blank' href='/${childPath}/sketch/' data-path='/${childPath}/sketch/'>${childPath}</a>
 				</div>
