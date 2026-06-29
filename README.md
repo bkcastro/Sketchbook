@@ -48,11 +48,11 @@ My_Sketchbook/
 
 Use any text editor and start hacking away.
 
-To see your sketches run the command `sketch server` in the root directory of your sketchbook. To learn more reference the server section down below.
+To see your sketches run the command `sketch serve` in the root directory of your sketchbook. To learn more reference the server section down below.
 
 #### Iterate
 
-The power of this creative process is the ability to iterate on ideas. At any point when you want to explore another idea use this command `sketch iterate`, an exact copy of the current sketch will be created. Make sure you are in the directory of the sketch you want to iterate. For example to iterate sketch `0001` `cd` to `0001/` and run the command. 
+The power of this creative process is the ability to iterate on ideas. At any point when you want to explore another idea use this command `sketch --iterate` or `sketch -i`, an exact copy of the current sketch will be created. Make sure you are in the directory of the sketch you want to iterate. For example to iterate sketch `0001` `cd` to `0001/` and run the command. 
 
 Don't `cd` to `0001/sketch/`, folders named **sketch*** cannot hold iterations.
 
@@ -75,7 +75,7 @@ A sketch is a simple idea that can be rendered on a bowser. It is up to the user
 
 ## Server
 
-Sketch has a built-in custom file server. This tool is handy when trying to come up with new ideas. To obtain a holistic view, open up different sketches and move them around the computer screen. Then sit back and channel the creative forces.
+Sketch has a built-in custom file server. This tool comes in handy when trying to come up with new ideas. To obtain a holistic view, open up different sketches and move them around the computer screen. Then sit back and channel the creative forces.
 
 There are two modes available.
 
@@ -85,7 +85,7 @@ Reference mode uses a tree to represent a sketchbook.
 
 ### Display 
 
-Display mode uses the thumbnail image found inside the folder's named `sketch` **if it exists**. It is up to the user to take a screenshot of their sketch, place it in the directory and name it `thumbnail.webp`. 
+Display mode uses the thumbnail image found inside the folder's named `sketch` **if it exists**. It is up to the user to take a screenshot of their sketch, place it in the directory. Image files that match this regular expression will be used `/^thumbnail\.[jpg|webp|png]{1}/`. 
 
 ```
 My_Sketchbook/
