@@ -2,15 +2,17 @@
 
 Sketch is a CLI tool that helps create art with code.
 
-[sketchbook_demo_2.webm](https://github.com/user-attachments/assets/ce05dadb-9a61-4e3d-9f10-44bcfe700138)
+## What is a sketch? 
 
-## Creative process
+A sketch is a simple idea that can be rendered with a bowser. This can be anything from generative art, UI/UX, images, 3D experiences, etc. It is up to the user to define what they wish to represent. 
 
-What is a creative process? An iterative process which generates ideas, develops them, and brings them to life. 
+## Getting started
 
-Sketch makes use of a process called [ZettelKasten](https://en.wikipedia.org/wiki/Zettelkasten) invented by [Nkilas Luhman](https://en.wikipedia.org/wiki/Niklas_Luhmann). But instead of taking notes we create **sketches**. 
+Create a new directory, `cd` into it then run the command `sketch init` to initialize a **sketchbook**.
 
-A simple sketchbook will look like this:
+A **sketchbook** is just a directory that holds sketches.
+
+A sketchbook with a couple sketches will look like this:
 
 ```
 My_Sketchbook/
@@ -29,13 +31,9 @@ My_Sketchbook/
     ...
 ```
 
-## Getting started
+### First sketch
 
-Run the command `sketch init` to make your first sketchbook. Then `cd` to the folder created to get started.
-
-#### Making your first sketch
-
-Once's you have an idea for a sketch just run the command `sketch new`. Two folders will be created `0001/` and `0001/sketch/`. Folder `0001/sketch/` holds all the source files needed to render a sketch with a browser, the default is just a blank web page. More on down below.
+The command `sketch` creates two folders `0001/` and `0001/sketch/`. Folder `0001/sketch/` contains all the files needed to render a sketch, the default is just a blank web page.
 
 ```
 My_Sketchbook/
@@ -46,34 +44,53 @@ My_Sketchbook/
             style.css
 ```
 
-Use any text editor and start hacking away.
+Use any text editor and start hacking away. 
 
-To see your sketches run the command `sketch serve` in the root directory of your sketchbook. To learn more reference the server section down below.
+Note: All files and resources should be kept inside the `sketch/` folder.
 
-#### Iterate
+### Iterate
 
-The power of this creative process is the ability to iterate on ideas. At any point when you want to explore another idea use this command `sketch --iterate` or `sketch -i`, an exact copy of the current sketch will be created. Make sure you are in the directory of the sketch you want to iterate. For example to iterate sketch `0001` `cd` to `0001/` and run the command. 
+The flag `--iterate` or `-i` for short is used to iterate on the most recent sketch.
 
-Don't `cd` to `0001/sketch/`, folders named **sketch*** cannot hold iterations.
+Running the command `sketch -i` produces this output:
 
 ```
 My_Sketchbook/
     0001/
-        sketch/
+        sketch/             <-- Source files copied
             ...
-        0001/           // Iteration just created.
-            sketch/
+    0002/                   <-- Iteration just created
+        sketch/             <-- Exact copy of 0001/sketch 
+            ...
 ```
 
-##### Tips
+There is another way to iterate, which involves moving into folder `0001/` and running the same command producing this output: 
 
-Don't hold back on making iterations! It is best if you just capture the essence of a sketch/idea/concept then iterate on it so you can reference it later.
+```
+My_Sketchbook/
+    0001/
+        sketch/             <-- Source files copied
+            ...
+        0002/               <-- Iteration just created
+            sketch/         <-- Exact copy of 0001/sketch 
+                ...
+```
 
-## Sketch
+This method allows the parent sketch to act as a container to all child sketches. Usually used to continue a **theme**, but experiment with different forms, color, behavior, etc...
 
-A sketch is a simple idea that can be rendered on a bowser. It is up to the user to defined what they wish to represent.
+Note: Folders named `sketch/` cannot hold iterations or other folders named `sketch/`, these folders are essentially leaf nodes.
+
+## Templates 
+
+To start off a new sketch with a template use the flag `--template template_name` like so: `sketch --template 3D`.
+
+To list all templates run the command `sketch templates`.
 
 ## Server
+
+[sketchbook_demo_2.webm](https://github.com/user-attachments/assets/ce05dadb-9a61-4e3d-9f10-44bcfe700138)
+
+Sketches can be viewed by running the command `sketch serve` in the root directory of a valid sketchbook.
 
 Sketch has a built-in custom file server. This tool comes in handy when trying to come up with new ideas. To obtain a holistic view, open up different sketches and move them around the computer screen. Then sit back and channel the creative forces.
 
@@ -85,7 +102,7 @@ Reference mode uses a tree to represent a sketchbook.
 
 ### Display 
 
-Display mode uses the thumbnail image found inside the folder's named `sketch` **if it exists**. It is up to the user to take a screenshot of their sketch, place it in the directory. Image files that match this regular expression will be used `/^thumbnail\.[jpg|webp|png]{1}/`. 
+Display mode uses the thumbnail image found inside the folder's named `sketch/` **if it exists**. It is up to the user to take a screenshot of their sketch and place it in the directory. Image files that match this regular expression will be used `/^thumbnail\.[jpg|webp|png]{1}$/`. 
 
 ```
 My_Sketchbook/
