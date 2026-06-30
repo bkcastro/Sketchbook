@@ -98,11 +98,11 @@ There are two modes available.
 
 ### Reference
 
-Reference mode uses a tree to represent a sketchbook. 
+Reference mode is used to represent a sketchbook with a tree like data-structure.
 
 ### Display 
 
-Display mode uses the thumbnail image found inside the folder named `sketch/` **if it exists**. It is up to the user to take a screenshot of their sketch and place it in the directory. Image files that match this regular expression will be used `/^thumbnail\.[jpg|webp|png]{1}$/`. 
+Display mode is used to represent a sketchbook with thumbnail images found inside the folders named `sketch/` **if they exists**. It is up to the user to take a screenshot of their sketch and place it in the directory. Image files that match this regular expression will be used `/^thumbnail\.[jpg|webp|png]{1}$/`. 
 
 ```
 My_Sketchbook/
