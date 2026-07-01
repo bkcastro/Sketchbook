@@ -1,8 +1,3 @@
-/**
- * This file contians all the methods needed to reference a template.
- */
-
-import chalk from 'chalk';
 import path from 'path';
 
 const templates = {
@@ -19,17 +14,18 @@ const templates = {
  */
 export function getTemplateURL(template) {
     
-    if (template in templates) {
-        return path.join(import.meta.dirname, templates[template]);
-    } else {
-        throw new Error(`Template: ${template} does not exists.`);
-    }
+    const project_directory = import.meta.dirname;
+    const template_directory = templates[template]; 
+
+    return path.join(project_directory, template_directory);
 }
 
 /**
- * Print templates available.
+ * Return a list of templates.
+ *
+ * @return {string}
  */
-export function printTemplates() {
-    console.log(chalk.green(Object.keys(templates).join(', ')));
-}
+export function getListOfTemplates() {
 
+    return Object.keys(templates).join(', '); 
+}

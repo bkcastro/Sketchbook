@@ -1,5 +1,5 @@
 #!/usr/bin/env node 
 
-import { process_input } from './lib/input.js'
+import start from './lib/cli.js'
 
-process_input();
+start();
