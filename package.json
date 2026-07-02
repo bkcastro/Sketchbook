@@ -1,6 +1,6 @@
 {
   "name": "sketch-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Sketch is a tool that helps create art with code.",
   "main": "./index.js",
   "bin": {
@@ -12,7 +12,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "node ./test/index.js"
+    "test": "node --test"
   },
   "repository": {
     "type": "git",

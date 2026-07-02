@@ -17,8 +17,9 @@
 
 ## July 2026 Version: 0.0.2
 
-+ [ ] Input and output flags.
 + [ ] Unit test for core commands.
+    + [ ] Who.
++ [ ] Input and output flags.
 + [ ] Create templates: 
     1. 3D.
     2. 2D_Camera.

@@ -11,17 +11,20 @@ endif
 let s:shortmess_save = &shortmess
 set shortmess+=aoO
 badd +20 release.md
-badd +0 ./lib/cli.js
-badd +24 ./lib/options.js
-badd +0 ./lib/log.js
-badd +0 ./lib/commands.js
+badd +1 lib/cli.js
+badd +24 lib/options.js
+badd +50 lib/log.js
+badd +59 lib/commands.js
+badd +1 test
+badd +35 test/commands.js
+badd +0 lib/files.js
 argglobal
 %argdel
 $argadd release.md
 set stal=2
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit ./lib/cli.js
+edit lib/cli.js
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -74,7 +77,7 @@ wincmd w
 argglobal
 enew | setl bt=help
 help :mksession@en
-balt ./lib/commands.js
+balt lib/commands.js
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -85,19 +88,19 @@ setlocal foldnestmax=20
 setlocal nofoldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 826 - ((19 * winheight(0) + 10) / 20)
+let s:l = 805 - ((9 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 826
+keepjumps 805
 normal! 064|
 wincmd w
 argglobal
-if bufexists(fnamemodify("./lib/commands.js", ":p")) | buffer ./lib/commands.js | else | edit ./lib/commands.js | endif
+if bufexists(fnamemodify("lib/commands.js", ":p")) | buffer lib/commands.js | else | edit lib/commands.js | endif
 if &buftype ==# 'terminal'
-  silent file ./lib/commands.js
+  silent file lib/commands.js
 endif
-balt ./lib/options.js
+balt lib/options.js
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -120,6 +123,7 @@ if bufexists(fnamemodify("release.md", ":p")) | buffer release.md | else | edit 
 if &buftype ==# 'terminal'
   silent file release.md
 endif
+balt lib/cli.js
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -135,9 +139,8 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 24
-normal! 017|
+normal! 010|
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 124 + 124) / 248)
 exe '2resize ' . ((&lines * 20 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 123 + 124) / 248)
@@ -146,7 +149,7 @@ exe 'vert 3resize ' . ((&columns * 123 + 124) / 248)
 exe '4resize ' . ((&lines * 18 + 30) / 61)
 exe 'vert 4resize ' . ((&columns * 123 + 124) / 248)
 tabnext
-edit ./lib/commands.js
+edit test/commands.js
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -166,7 +169,7 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 124 + 124) / 248)
 exe 'vert 2resize ' . ((&columns * 123 + 124) / 248)
 argglobal
-balt ./lib/log.js
+balt lib/commands.js
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -177,39 +180,39 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 48 - ((47 * winheight(0) + 29) / 58)
+let s:l = 56 - ((55 * winheight(0) + 29) / 58)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 56
+normal! 03|
+wincmd w
+argglobal
+if bufexists(fnamemodify("lib/files.js", ":p")) | buffer lib/files.js | else | edit lib/files.js | endif
+if &buftype ==# 'terminal'
+  silent file lib/files.js
+endif
+balt lib/commands.js
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 48 - ((42 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 48
-normal! 0
-wincmd w
-argglobal
-if bufexists(fnamemodify("./lib/log.js", ":p")) | buffer ./lib/log.js | else | edit ./lib/log.js | endif
-if &buftype ==# 'terminal'
-  silent file ./lib/log.js
-endif
-balt ./lib/options.js
-setlocal foldmethod=manual
-setlocal foldexpr=0
-setlocal foldmarker={{{,}}}
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldenable
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 57 - ((46 * winheight(0) + 29) / 58)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 57
-normal! 035|
+normal! 053|
 wincmd w
 exe 'vert 1resize ' . ((&columns * 124 + 124) / 248)
 exe 'vert 2resize ' . ((&columns * 123 + 124) / 248)
-tabnext 1
+tabnext 2
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -225,7 +228,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
